@@ -1,2 +1,6 @@
 require('babel/register');
-require('./server.js');
+var backendServer = require('./server.js');
+
+module.exports = function(frontendServer){
+	return backendServer(frontendServer);
+};

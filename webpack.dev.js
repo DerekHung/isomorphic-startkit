@@ -5,13 +5,13 @@ var config = require('./webpack.config');
 var options = { 
 	host: 'localhost',
 	port: 3000,
-	publicPath: '/',
-	outputPath: '/',
-	filename: 'bundle.js',
+	publicPath: config.output.publicPath,
+	outputPath: config.output.path,
+	filename: config.output.filename,
 	watchOptions: undefined,
 	watchDelay: undefined,
-	hot: false,
-	contentBase: path.join(__dirname, 'build'),
+	hot: true,
+	contentBase: false,
 	stats:{ 
 		cached: false,
 		cachedAssets: false,
@@ -23,21 +23,30 @@ var options = {
 		}
 	},
 	inline: true,
-	historyApiFallback: true 
+	historyApiFallback: false
 };
-var protocol = options.https ? "https" : "http";
-var compiler = webpack(config);
-var server = new WebpackDevServer(compiler, options);
+options.protocol = options.https ? "https" : "http"; 
+config.entry = [
+	require.resolve("webpack-dev-server/client/") + "?" + options.protocol + "://" + options.host + ":" + options.port, 
+	'webpack/hot/dev-server'].concat(config.entry);
+config.plugins = [
+	new webpack.HotModuleReplacementPlugin()
+];
+config.context = __dirname;
 
-server.listen(options.port, options.host, function (err) {
+var compiler = webpack(config);
+var frontendServer = new WebpackDevServer(compiler, options);
+
+frontendServer.app.set('port', options.port);
+frontendServer.listen(options.port, options.host, function (err) {
 	if(err){
 		throw err;
 	}
 	
 	if(options.inline){
-		console.log(protocol + "://" + options.host + ":" + options.port + "/");
+		console.log(options.protocol + "://" + options.host + ":" + options.port + "/");
 	}else{
-		console.log(protocol + "://" + options.host + ":" + options.port + "/webpack-dev-server/");
+		console.log(options.protocol + "://" + options.host + ":" + options.port + "/webpack-dev-server/");
 	}
 	
 	console.log("webpack result is served from " + options.publicPath);
@@ -53,5 +62,4 @@ server.listen(options.port, options.host, function (err) {
 	}
 });
 
-
-//webpack-dev-server --inline --history-api-fallback --port 3000 --progess --colors --content-base build
+module.exports = frontendServer;

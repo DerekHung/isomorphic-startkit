@@ -5,7 +5,7 @@ export function loadUserData() {
 	return {
 		[CALL_API]: {
 			method: 'get',
-			url: 'http://localhost:3000/ajax/user',
+			url: '/ajax/user',
 			successType: LOADED_USERDATE
 		}
 	};

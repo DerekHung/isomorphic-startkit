@@ -2,7 +2,6 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-	devtool: 'eval',
 	entry: [
 		'webpack-dev-server/client?http://localhost:3000',
 		'webpack/hot/only-dev-server',
@@ -12,12 +11,10 @@ module.exports = {
 		root: [ __dirname ]
 	},
 	output: {
-		path: path.join(__dirname, 'build'),
+		path: '/js/build',
+		publicPath: '/js/build',
 		filename: 'bundle.js'
 	},
-	plugins: [
-		new webpack.HotModuleReplacementPlugin()
-	],
 	module: {
 		loaders: [{
 			test: /\.js$/,
@@ -34,8 +31,8 @@ module.exports = {
 						],
 						extra: {
 							'react-transform': {
-								'transforms': [{
-									'transform':  'react-transform-hmr',
+								transforms: [{
+									transform:  'react-transform-hmr',
 									imports: ['react'],
 									locals:  ['module']
 								}]
