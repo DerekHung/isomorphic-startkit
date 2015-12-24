@@ -91,7 +91,7 @@ function ServerCreater(frontendServer){
 	return backendServer;
 }
 
-export default ServerCreater;
+module.exports = ServerCreater;
 
 
 
