@@ -15,7 +15,7 @@ class Header extends Component {
 					</li>
 					<li className="head">
 						<Link to="/user/show/100080">
-							<img src="//172.19.7.75/DocumentManagementTomcatAccess/imgs/104plus/91a/708/c04/c0397be2773049198154e13e3f56f44511_headM.png?3b46dffc06d9c7c01028557ee438493f&v=i25v6icffq6viuci54" />
+							<img src="//resource.holyshare.com.tw/uploads/article/600x0/1389087501_1.jpg" />
 						</Link>
 					</li>
 				</ul>
