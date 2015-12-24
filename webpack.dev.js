@@ -28,7 +28,9 @@ var options = {
 options.protocol = options.https ? "https" : "http"; 
 config.entry = [
 	require.resolve("webpack-dev-server/client/") + "?" + options.protocol + "://" + options.host + ":" + options.port, 
-	'webpack/hot/dev-server'].concat(config.entry);
+	'webpack/hot/dev-server',
+	'webpack-dev-server/client?http://localhost:3000',
+	'webpack/hot/only-dev-server'].concat(config.entry);
 config.plugins = [
 	new webpack.HotModuleReplacementPlugin()
 ];

@@ -6,7 +6,7 @@ var debug = require('debug')('bigc-redux:server');
 var backendServer = require('../server')();
 var http = require('http');
 var server = http.createServer(backendServer);
-var port = 4000;
+var port = 3000;
 
 server.listen(port);
 server.on('error', onError);

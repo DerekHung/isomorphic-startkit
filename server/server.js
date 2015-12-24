@@ -11,6 +11,7 @@ import Promise from 'bluebird';
 
 import configureStore from 'store/configureStore';
 import createRoutes from 'routes/index';
+import ajaxRoutes from 'routes/ajaxRoutes';
 
 function ServerCreater(frontendServer){
 	let backendServer = frontendServer || new Express();
@@ -19,11 +20,8 @@ function ServerCreater(frontendServer){
 	backendServer.set('views', path.join(__dirname, 'views'));
 	backendServer.set('view engine', 'ejs');
 
-	// mock apis
-	backendServer.get('/ajax/questions', (req, res) => {
-		let { questions } = require('./mock_api');
-		res.status(200).send(questions);
-	});
+	// apis
+	backendServer.use('/ajax', ajaxRoutes);
 
 	// page route
 	backendServer.use((req, res, next) => {
@@ -63,6 +61,9 @@ function ServerCreater(frontendServer){
 				function getReduxPromise () {
 					let { query, params } = renderProps;
 					let comp = renderProps.components[renderProps.components.length - 1].WrappedComponent;
+					
+					params.serverSide = true;
+					
 					let promise = comp.fetchData ?
 						comp.fetchData({ query, params, store, history }) :
 						Promise.resolve();

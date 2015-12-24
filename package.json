@@ -3,9 +3,8 @@
 	"version": "0.0.1",
 	"description": "bigc redux demo",
 	"scripts": {
-		"start": "set NODE_PATH=.&& node --harmony ./bin/www",
+		"start": "set NODE_PATH=.&& nodemon --harmony ./bin/www",
 		"dev": "set NODE_PATH=.&& node --harmony ./bin/www-dev",
-		"ofe": "webpack-dev-server --inline --hot --history-api-fallback --port 3000 --progess --colors --content-base public",
 		"test:karma": "karma start",
 		"test": "NODE_ENV=test NODE_PATH=. mocha --compilers js:babel/register -r spec/support/setup.mocha.js --recursive 'spec/**/*.test.js' -w"
 	},
