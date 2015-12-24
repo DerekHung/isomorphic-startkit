@@ -14,7 +14,6 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	module: {
-<<<<<<< HEAD
 		loaders: [{
 			test: /\.js$/,
 			loader: 'babel-loader',
@@ -32,27 +31,5 @@ module.exports = {
 				]
            		}
 		}]
-=======
-		loaders: [
-		{
-            test: /\.(js|jsx)$/,
-            loader: 'babel-loader',
-            exclude: /node_modules/,
-            include: __dirname,
-            query: {
-            	optional: ['runtime'],
-                plugins: [
-                    ['react-transform', {
-                        'transforms': [{
-                            'transform': 'react-transform-hmr',
-                            'imports': ['react'],
-                            'locals': ['module']
-                        }]
-                    }]
-                ]
-            }
-        },
-		]
->>>>>>> bb91574f3df2706f7f75e5dbe9f1c1a3cddb4ebb
 	}
 };
