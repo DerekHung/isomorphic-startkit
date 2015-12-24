@@ -20,7 +20,7 @@ function ServerCreater(frontendServer){
 	backendServer.set('views', path.join(__dirname, 'views'));
 	backendServer.set('view engine', 'ejs');
 
-	// apis
+	// apis 
 	backendServer.use('/ajax', ajaxRoutes);
 
 	// page route
