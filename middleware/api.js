@@ -16,6 +16,19 @@ export default (store) => {
 			let request = action[CALL_API];
 			let { method, url, params, successType } = request;
 			
+			if(params.serverSide === true){
+				let { questions } = require('server/mock_api');
+				next({
+					type: successType,
+					response: questions
+				});
+				if (utils.isFunction(request.afterSuccess)) {
+					request.afterSuccess({ getState });
+				}
+				deferred.resolve();
+				return deferred.promise;
+			}
+
 			//rest api
 			superagent[method](url).end((err, response) => {
 				if(!err && response && response.body){

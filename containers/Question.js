@@ -5,8 +5,8 @@ import utils from 'lodash';
 import { loadQuestions } from 'actions/questions';
 
 class Question extends Component {
-	static fetchData({ store }) {
-		return store.dispatch(loadQuestions());
+	static fetchData({ params, store }) {
+		return store.dispatch(loadQuestions(params));
 	}
 	componentDidMount() {
 		this.props.loadQuestions(this.props.params);
@@ -22,7 +22,7 @@ class Question extends Component {
 						);
 					})
 				}
-
+				{"{" + this.props.aaa + "}"}
 				<Link to="/">Back to Home</Link>
 			</div>
 		);
@@ -30,7 +30,7 @@ class Question extends Component {
 }
 
 function mapStateToProps (state) {
-	return { questions: state.questions };
+	return { questions: state.questions, "aaa":123 };
 }
 
 export { Question };
