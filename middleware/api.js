@@ -2,10 +2,6 @@ import superagent from 'superagent';
 import Promise from 'bluebird';
 import utils from 'lodash';
 
-import ajaxRoutes from 'routes/ajaxRoutes';
-
-console.log(ajaxRoutes.stack.length);
-
 export const CALL_API = Symbol('CALL_API');
 
 export default (store) => {
