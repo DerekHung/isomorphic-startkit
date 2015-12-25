@@ -1,5 +1,4 @@
 require('babel-core/register');
-//require('babel-polyfill');
 var backendServer = require('./server.js');
 var hook = require('css-modules-require-hook');
 

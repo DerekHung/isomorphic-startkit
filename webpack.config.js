@@ -22,7 +22,6 @@ module.exports = {
             exclude: /node_modules/,
             include: __dirname,
             query: {
-            	optional: ['runtime'],
                 plugins: [
                     ['react-transform', {
                         'transforms': [{
@@ -40,5 +39,5 @@ module.exports = {
             loader: "style-loader!css-loader?modules&localIdentName=[name]__[local]___[hash:base64:5]"
         },
 		]
-	},
+	}
 };
