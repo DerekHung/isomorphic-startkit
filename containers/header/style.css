@@ -1,0 +1,33 @@
+.header {
+	height: 46px;
+	padding: 10px 20px;
+}
+.header h1 {
+	float: left;
+	vertical-align: middle;
+	padding: 0;
+	font-size: 32px;
+	height: 26px;
+	line-height: 26px;
+}
+.header a {
+	color: #FFF;
+}
+.right-nav {
+	float: right;
+	vertical-align: middle;
+	height: 26px;
+	margin: 0;
+}
+.right-nav li {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 10px;
+	padding: 0;
+}
+.right-nav .head {
+	height: 26px;
+}
+.right-nav .head img {
+	height: 26px;
+}

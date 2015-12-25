@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Header from 'containers/Header';
+import Header from 'containers/header';
 import Footer from 'containers/Footer';
 
 class App extends Component {
