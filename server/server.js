@@ -20,7 +20,12 @@ function ServerCreater(frontendServer){
 	backendServer.set('views', path.join(__dirname, 'views'));
 	backendServer.set('view engine', 'ejs');
 
-	// apis 
+	// apis
+	backendServer.use(function(req, res, next){
+		req.params.serverSide = true;
+		req.query.serverSide = true;
+		next();
+	});
 	backendServer.use('/ajax', ajaxRoutes);
 
 	// page route
@@ -42,7 +47,8 @@ function ServerCreater(frontendServer){
 				let reqUrl = location.pathname + location.search;
 
 				getReduxPromise().then(()=> {
-					let reduxState = escape(JSON.stringify(store.getState()));
+					let sourceState = store.getState();
+					let reduxState = JSON.stringify(sourceState);
 					let html = ReactDOMServer.renderToString(
 						<Provider store={store}>
 							{ <RoutingContext {...renderProps} /> }
@@ -66,7 +72,9 @@ function ServerCreater(frontendServer){
 					
 					let promise = comp.fetchData ?
 						comp.fetchData({ query, params, store, history }) :
-						Promise.resolve();
+						new Promise((resolve, reject) => {
+							resolve();
+						});
 
 					return promise;
 				}

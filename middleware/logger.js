@@ -1,7 +1,7 @@
 import createLogger from 'redux-logger';
 
 const logger = createLogger({
-	level: 'info',
+	level: 'log',
 	collapsed: false,
 	logger: console,
 	predicate: (getState, action) => true

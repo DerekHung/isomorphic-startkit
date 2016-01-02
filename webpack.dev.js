@@ -23,7 +23,8 @@ var options = {
 		}
 	},
 	inline: true,
-	historyApiFallback: false
+	historyApiFallback: false,
+	noInfo: true
 };
 options.protocol = options.https ? "https" : "http"; 
 config.entry = [
@@ -33,8 +34,15 @@ config.entry = [
 	'webpack/hot/only-dev-server'].concat(config.entry);
 config.plugins = [
 	new webpack.HotModuleReplacementPlugin()
-];
+].concat(config.plugins);
 config.context = __dirname;
+config.module.loaders[0].query.plugins.push(['react-transform', {
+	'transforms': [{
+		'transform': 'react-transform-hmr',
+		'imports': ['react'],
+		'locals': ['module']
+	}]
+}]);
 
 var compiler = webpack(config);
 var frontendServer = new WebpackDevServer(compiler, options);
