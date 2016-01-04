@@ -1,53 +1,27 @@
-import superagent from 'superagent';
 import Promise from 'bluebird';
-import utils from 'lodash';
 
 export const CALL_API = Symbol('CALL_API');
+export default (store) => (next) => (action) => {
+	if ( ! action[CALL_API] ) {
+		return next(action);
+	}
 
-export default (store) => {
-	return (next) => {
-		return (action) => {
-			if ( ! action[CALL_API] ) {
-				return next(action);
-			}
-			
-			let { getState } = store;
-			let deferred = Promise.defer();
-			let request = action[CALL_API];
-			let { method, url, params, successType } = request;
-			
-			if(params.serverSide === true){
-				let { questions } = require('server/mock_api');
+	let request = action[CALL_API];
+	let { getState } = store;
+	
+	return new Promise((resolve, reject) => {
+		if(typeof __REDUX_STATE__ !== 'undefined' && (getState() === window.__REDUX_STATE__)){
+			window.__REDUX_STATE__ = {};
+			resolve();
+		}else{
+			request((type, response) => {
 				next({
-					type: successType,
-					response: questions
+					type: type,
+					response: response
 				});
-				if (utils.isFunction(request.afterSuccess)) {
-					request.afterSuccess({ getState });
-				}
-				deferred.resolve();
-				return deferred.promise;
-			}
-
-			//rest api
-			superagent[method](url).end((err, response) => {
-				if(!err && response && response.body){
-					next({
-						type: successType,
-						response: response.body
-					});
-					
-					if (utils.isFunction(request.afterSuccess)) {
-						request.afterSuccess({ getState });
-					}
-				}
-
-				//resolve
-				deferred.resolve();
+				
+				resolve();
 			});
-			
-			//promise
-			return deferred.promise;
-		};
-	};
+		}
+	});
 };

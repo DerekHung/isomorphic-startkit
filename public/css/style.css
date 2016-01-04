@@ -56,8 +56,10 @@
 .header .right-nav .head {
 	height: 26px;
 }
-.header .right-nav .head img {
+.header .right-nav .head .img {
+	width: 26px;
 	height: 26px;
+	background: #F90;
 }
 
 

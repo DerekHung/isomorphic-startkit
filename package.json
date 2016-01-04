@@ -8,10 +8,11 @@
     "url": "https://github.com/rexhome7326/universal-react-redux"
   },
   "scripts": {
-    "wstart": "set NODE_PATH=.&& nodemon --harmony ./bin/www",
-    "wdev": "set NODE_PATH=.&& node --harmony ./bin/www-dev",
-    "start": "NODE_PATH=. nodemon --harmony ./bin/www",
-    "dev": "NODE_PATH=. node --harmony ./bin/www-dev"
+        "wstart": "set NODE_PATH=.&& node --harmony ./bin/www",
+        "wdev": "set NODE_PATH=.&& node --harmony ./bin/www-dev",
+        "start": "NODE_PATH=. node --harmony ./bin/www",
+        "dev": "NODE_PATH=. node --harmony ./bin/www-dev",
+            "build": "webpack -p -d --progress --colors"
   },
   "dependencies": {
     "async": "^1.5.0",
@@ -43,7 +44,8 @@
     "safe-json-stringify": "^1.0.3",
     "soap": "^0.11.1",
     "style-loader": "^0.13.0",
-    "superagent": "^1.6.1"
+    "superagent": "^1.6.1",
+    "unirest": "^0.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.3.21",
@@ -60,4 +62,5 @@
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   }
+
 }

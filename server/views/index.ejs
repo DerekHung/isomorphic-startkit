@@ -14,9 +14,7 @@
 	</head>
 	<body>
 		<div id="root"><%- html %></div>
-		<script type="text/javascript" charset="utf-8">
-			window.__REDUX_STATE__ = '<%= reduxState %>';
-		</script>
+		<script type="text/javascript" charset="utf-8">window.__REDUX_STATE__ = <%- reduxState %>;</script>
 		<script src="/js/build/bundle.js"></script>
 	</body>
 </html>
