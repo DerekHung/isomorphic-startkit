@@ -71,6 +71,5 @@ frontendServer.listen(options.port, options.host, function (err) {
 		console.log("404s will fallback to %s", options.historyApiFallback.index || "/index.html");
 	}
 });
-console.log(compiler.options.module.loaders);
-//console.log(frontendServer);
+
 module.exports = frontendServer;

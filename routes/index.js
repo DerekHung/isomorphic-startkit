@@ -6,8 +6,6 @@ import Demo from 'containers/Demo';
 import QuestionList from 'containers/QuestionList';
 import User from 'containers/User';
 
-
-
 export default function(history) {
 	return (
 		<Router history={history}>

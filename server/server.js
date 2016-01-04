@@ -16,8 +16,6 @@ import ajaxRoutes from 'routes/ajaxRoutes';
 function ServerCreater(frontendServer){
 	let backendServer = frontendServer || new Express();
 
-	
-	
 	backendServer.use(Express.static(path.join(__dirname, '../public')));
 	backendServer.set('views', path.join(__dirname, 'views'));
 	backendServer.set('view engine', 'ejs');

@@ -1,4 +1,3 @@
-
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
@@ -28,7 +27,7 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-  return {};
+	return {};
 }
 
 export default connect(mapStateToProps)(Header);
