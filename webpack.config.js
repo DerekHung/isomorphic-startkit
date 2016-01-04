@@ -5,8 +5,10 @@ module.exports = {
 	entry: [
 		'./client'
 	],
+	debug:true,
 	resolve: {
-		root: [ __dirname ]
+		root: [ __dirname ],
+		extensions: ["", ".js", ".jsx"]
 	},
 	output: {
 		path: path.join(__dirname, '/public/js/build'),
@@ -26,6 +28,12 @@ module.exports = {
 			query: {
 				plugins: []
 			}
-		}]
+		},
+		{
+            test: /\.css$/,
+            include: __dirname,
+            loader: "style-loader!css-loader"
+        }
+		]
 	}
 };
