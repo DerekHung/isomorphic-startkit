@@ -7,9 +7,9 @@ import createRoutes from 'routes/index';
 
 let reduxState;
 if (window.__REDUX_STATE__) {
-  try {
-    reduxState = JSON.parse(unescape(__REDUX_STATE__));
-  } catch (e) {}
+	try {
+		reduxState = __REDUX_STATE__;
+	} catch (e) {}
 }
 
 const store = configureStore(reduxState);

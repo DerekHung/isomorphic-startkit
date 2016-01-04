@@ -14,8 +14,8 @@ class Header extends Component {
 						<a href="/">首頁</a>
 					</li>
 					<li className="head">
-						<Link to="/user/show/100080">
-							<img src="//resource.holyshare.com.tw/uploads/article/600x0/1389087501_1.jpg" />
+						<Link to="/100080">
+							<div className="img"></div>
 						</Link>
 					</li>
 				</ul>
