@@ -5,6 +5,7 @@ module.exports = {
 	entry: [
 		'./client'
 	],
+	debug:true,
 	resolve: {
 		root: [ __dirname ],
 		extensions: ["", ".js", ".jsx"]
