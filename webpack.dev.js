@@ -33,8 +33,7 @@ config.entry = [
 	'webpack-dev-server/client?http://localhost:3000',
 	'webpack/hot/only-dev-server'].concat(config.entry);
 config.plugins = [
-	new webpack.HotModuleReplacementPlugin(),
-	new webpack.DefinePlugin({"process.env": {BROWSER: JSON.stringify(true)}})
+	new webpack.HotModuleReplacementPlugin()
 ].concat(config.plugins);
 config.context = __dirname;
 config.module.loaders[0].query.plugins.push(['react-transform', {

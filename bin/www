@@ -2,6 +2,12 @@
 
 "use strict";
 
+var hook = require('css-modules-require-hook');
+
+hook({
+	generateScopedName: '[name]__[local]___[hash:base64:5]',
+});
+
 var debug = require('debug')('bigc-redux:server');
 var backendServer = require('../server')();
 var http = require('http');
