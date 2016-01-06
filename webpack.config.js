@@ -30,10 +30,9 @@ module.exports = {
 			}
 		},
 		{
-            test: /\.css$/,
-            include: __dirname,
-            loader: "style-loader!css-loader"
-        }
-		]
+			test: /\.css$/,
+			loader: "style-loader!css-loader",
+			include: __dirname
+		}]
 	}
 };

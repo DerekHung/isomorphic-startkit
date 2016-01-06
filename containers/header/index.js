@@ -1,11 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-//import css from './style.css';
+import css from './style.css';
 
 class Header extends Component {
 	render() {
-		
 		return (
 			<header className="header">
 				<h1>
