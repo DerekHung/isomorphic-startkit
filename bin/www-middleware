@@ -2,18 +2,11 @@
 
 "use strict";
 
-var hook = require('css-modules-require-hook');
-
-hook({
-	generateScopedName: '[name]__[local]___[hash:base64:5]',
-});
-// ︿ 應該不是放這邊
-
-
 var debug = require('debug')('bigc-redux:server');
-var backendServer = require('../server')();
+var frontendServer = require('../webpack.middleware');
 var http = require('http');
-var server = http.createServer(backendServer);
+var backendServer = require('../server')(frontendServer);
+var server = http.createServer(frontendServer);
 var port = 3000;
 
 server.listen(port);

@@ -13,21 +13,21 @@
 .header a {
 	color: #FFF;
 }
-.right-nav {
+.rightNav {
 	float: right;
 	vertical-align: middle;
 	height: 26px;
 	margin: 0;
 }
-.right-nav li {
+.rightNav li {
 	display: inline-block;
 	vertical-align: middle;
 	margin-left: 10px;
 	padding: 0;
 }
-.right-nav .head {
+.rightNav .head {
 	height: 26px;
 }
-.right-nav .head img {
+.rightNav .head img {
 	height: 26px;
 }

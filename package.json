@@ -12,7 +12,8 @@
     "wdev": "set NODE_PATH=.&& node --harmony ./bin/www-dev",
     "start": "NODE_PATH=. node --harmony ./bin/www",
     "dev": "NODE_PATH=. node --harmony ./bin/www-dev",
-    "build": "webpack -p -d --progress --colors"
+    "build": "webpack -p -d --progress --colors",
+    "hot":"NODE_PATH=. node --harmony ./bin/www-middleware"
   },
   "dependencies": {
     "async": "^1.5.0",
