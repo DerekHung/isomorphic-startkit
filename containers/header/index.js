@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import css from './style.css';
 
-console.log(css);
 class Header extends Component {
 	render() {
 		return (
