@@ -40,7 +40,7 @@ $ npm install
 
 ##Run dev in mac or linux
 ```bash
-$ npm run dev
+$ npm run hot
 ```
 
 ##Run dev in windows
