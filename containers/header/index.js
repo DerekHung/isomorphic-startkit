@@ -12,10 +12,10 @@ class Header extends Component {
 				</h1>
 				<ul className={css.rightNav}>
 					<li>
-						<a href="/">首頁sssss</a>
+						<a href="/">首頁</a>
 					</li>
 					<li className={css.head}>
-						<Link to="/user/show/100080">
+						<Link to="/100080">
 							<img src="//resource.holyshare.com.tw/uploads/article/600x0/1389087501_1.jpg" />
 						</Link>
 					</li>

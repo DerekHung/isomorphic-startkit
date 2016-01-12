@@ -12,8 +12,7 @@
     "wdev": "set NODE_PATH=.&& node --harmony ./bin/www-dev",
     "start": "NODE_PATH=. node --harmony ./bin/www",
     "dev": "NODE_PATH=. node --harmony ./bin/www-dev",
-    "build": "webpack -p -d --progress --colors",
-    "hot":"NODE_PATH=. node --harmony ./bin/www-middleware"
+    "build": "webpack -p -d --progress --colors"
   },
   "dependencies": {
     "async": "^1.5.0",
@@ -30,7 +29,6 @@
     "jquery": "^2.1.4",
     "jsdom": "^7.2.2",
     "lodash": "^3.10.1",
-    "morgan": "^1.6.1",
     "postcss": "^5.0.13",
     "postcss-modules-extract-imports": "^1.0.0",
     "postcss-modules-local-by-default": "^1.0.1",
@@ -64,6 +62,8 @@
     "react-transform-hmr": "^1.0.1",
     "rewire-webpack": "^1.0.1",
     "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.14.0"
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-dev-server": "^1.14.0",
+   "webpack-hot-middleware": "^2.6.0"
   }
 }

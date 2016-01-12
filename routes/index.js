@@ -2,9 +2,9 @@ import React from 'react';
 import { Router, Route, IndexRoute } from 'react-router';
 
 import App from 'containers/App';
-import Demo from 'containers/Demo';
-import QuestionList from 'containers/QuestionList';
-import User from 'containers/User';
+import Demo from 'containers/demo';
+import QuestionList from 'containers/questionList';
+import User from 'containers/user';
 
 export default function(history) {
 	return (

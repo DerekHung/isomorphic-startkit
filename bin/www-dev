@@ -2,17 +2,12 @@
 
 "use strict";
 
-var hook = require('css-modules-require-hook');
-
-hook({
-	generateScopedName: '[name]__[local]___[hash:base64:5]',
-});
-
 var debug = require('debug')('bigc-redux:server');
 var frontendServer = require('../webpack.dev');
-var backendServer = require('../server')(frontendServer.app);
-var server = frontendServer.listeningApp;
-var port = frontendServer.app.get('port');
+var http = require('http');
+var backendServer = require('../server')(frontendServer);
+var server = http.createServer(frontendServer);
+var port = 3000;
 
 server.listen(port);
 server.on('error', onError);

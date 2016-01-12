@@ -1,5 +1,8 @@
 import Express from 'express';
 import path from 'path';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 
 import React from 'react';
 import { Provider } from 'react-redux';
@@ -14,9 +17,12 @@ import createRoutes from 'routes/index';
 import ajaxRoutes from 'routes/ajaxRoutes';
 
 function ServerCreater(frontendServer){
-
 	let backendServer = frontendServer || new Express();
-
+	
+	backendServer.use(compression());
+	backendServer.use(bodyParser.json());
+	backendServer.use(bodyParser.urlencoded({extended:true})); 
+	backendServer.use(cookieParser());
 	backendServer.use(Express.static(path.join(__dirname, '../public')));
 	backendServer.set('views', path.join(__dirname, 'views'));
 	backendServer.set('view engine', 'ejs');

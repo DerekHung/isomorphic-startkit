@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import Header from 'containers/header';
-import Footer from 'containers/Footer';
+import Footer from 'containers/footer';
 
 class App extends Component {
 	render() {
@@ -15,7 +15,8 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
+	console.log("App");
 	return {};
 }
 
