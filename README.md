@@ -38,25 +38,16 @@ The data flow pattern of this using redux, and connecting state and props using 
 $ npm install
 ```
 
-##Run dev in mac or linux
+##Run dev in all os
 ```bash
 $ npm run dev
 ```
 
-##Run dev in windows
+##Run server in all os
 ```bash
-$ npm run wdev
+$ npm start
 ```
 
-##Run production in  mac or linux
-```bash
-$ npm run start
-```
-
-##Run production in windows
-```bash
-$ npm run wstart
-```
 ##build bundle file
 ```bash
 $ npm build

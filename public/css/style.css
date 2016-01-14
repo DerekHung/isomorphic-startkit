@@ -1,16 +1,6 @@
-.header, .footer {
-	background: #333;
-	padding: 20px;
-}
-.header h1, .footer {
-	color: #FFF;
-}
 .container {
 	min-height: 400px;
 	padding: 20px;
-}
-.footer {
-	text-align: center;
 }
 .hide {
 	display: none;
@@ -22,82 +12,43 @@
 	color: #FFF;
 }
 
-
-/**
- * header
+/*
+ * table
  */
-.header {
-	height: 46px;
-	padding: 10px 20px;
-}
-.header h1 {
-	float: left;
-	vertical-align: middle;
-	padding: 0;
-	font-size: 32px;
-	height: 26px;
-	line-height: 26px;
-}
-.header a {
-	color: #FFF;
-}
-.header .right-nav {
-	float: right;
-	vertical-align: middle;
-	height: 26px;
-	margin: 0;
-}
-.header .right-nav li {
-	display: inline-block;
-	vertical-align: middle;
-	margin-left: 10px;
-	padding: 0;
-}
-.header .right-nav .head {
-	height: 26px;
-}
-.header .right-nav .head .img {
-	width: 26px;
-	height: 26px;
-	background: #F90;
-}
-
-
-/**
- * user-info-table
- */
-.user-info-table-wrap,
-.user-info-table-wrap .info-wrap dl {
+.table, .table .tr {
 	width: 100%;
 }
-.user-info-table-wrap .info-wrap {
+.table .tr {
 	border-top: 1px #333 solid;
 }
-.user-info-table-wrap .info-wrap dl:hover {
+.table .tr:hover {
 	background: #F3F3F3;
 }
-.user-info-table-wrap .info-wrap dt,
-.user-info-table-wrap .info-wrap dd {
+.table .td {
 	width: 15%;
 	padding: 10px;
 	display: inline-block;
 	vertical-align: top;
 }
-.user-info-table-wrap .info-wrap dt {
+.table dt.td {
 	padding-top: 8px;
 }
-.user-info-table-wrap .info-wrap dd {
+.table dd.td {
 	width: 80%;
 }
-.user-info-table-wrap .info-wrap input,
-.user-info-table-wrap .info-wrap select{
+.table input,
+.table select{
 	width: 30%;
 	padding: 10px;
 }
-.user-info-table-wrap .info-wrap textarea {
+.table textarea {
 	width: 60%;
 	padding: 10px;
 }
+
+/**
+ * user-info-table
+ */
 .user-info-table-wrap .action-wrap {
 	text-align: center;
 }

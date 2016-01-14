@@ -2,20 +2,32 @@
 
 "use strict";
 
-var hook = require('css-modules-require-hook');
+var path = require('path');
+process.env.NODE_PATH = path.join(__dirname, '../');
+require('module').Module._initPaths();
 
-hook({
-	generateScopedName: '[name]__[local]___[hash:base64:5]',
+var paramMap = {};
+process.argv.forEach(function(val, index, array){
+	var paramSplit = val.split('=');
+	if(paramSplit[1]){
+		paramMap[paramSplit[0]] = paramSplit[1];
+	}
 });
-// ︿ 應該不是放這邊
-
 
 var debug = require('debug')('bigc-redux:server');
-var backendServer = require('../server')();
-var http = require('http');
-var server = http.createServer(backendServer);
-var port = 3000;
+var express = require('express');
+var app = new express();
 
+if(paramMap['--env'] === 'dev'){
+	require('../webpack.devHot')(app);
+}else{
+	require('../webpack.devHot')();
+}
+require('../server')(app);
+
+var http = require('http');
+var port = app.get('port');
+var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

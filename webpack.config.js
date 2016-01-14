@@ -3,9 +3,9 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: [
-		'./client'
+		'./client/client'
 	],
-	debug:true,
+	debug: true,
 	resolve: {
 		root: [ __dirname ],
 		extensions: ["", ".js", ".jsx"]

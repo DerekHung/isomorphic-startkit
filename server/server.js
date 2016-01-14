@@ -1,6 +1,8 @@
-import Express from 'express';
+import express from 'express';
 import path from 'path';
-
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOMServer from 'react-dom/server';
@@ -9,30 +11,32 @@ import createLocation from 'history/lib/createLocation';
 import createMemoryHistory from 'history/lib/createMemoryHistory';
 import Promise from 'bluebird';
 
-import configureStore from 'store/configureStore';
-import createRoutes from 'routes/index';
-import ajaxRoutes from 'routes/ajaxRoutes';
+import configureStore from 'client/store/configureStore';
+import pageRoutes from 'client/routes/index';
+import ajaxRoutes from 'client/routes/ajaxRoutes';
 
-function ServerCreater(frontendServer){
+module.exports = function(app){
+	app.use(compression());
+	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded({extended:true})); 
+	app.use(cookieParser());
+	app.use(express.static(path.join(__dirname, '../public')));
+	app.set('views', path.join(__dirname, 'views'));
+	app.set('view engine', 'ejs');
+	app.set('port', 3000);
 
-	let backendServer = frontendServer || new Express();
-
-	backendServer.use(Express.static(path.join(__dirname, '../public')));
-	backendServer.set('views', path.join(__dirname, 'views'));
-	backendServer.set('view engine', 'ejs');
-
-	// apis
-	backendServer.use(function(req, res, next){
+	// api route
+	app.use(function(req, res, next){
 		req.params.serverSide = true;
 		req.query.serverSide = true;
 		next();
 	});
-	backendServer.use('/ajax', ajaxRoutes);
+	app.use('/ajax', ajaxRoutes);
 
 	// page route
-	backendServer.use((req, res, next) => {
+	app.use((req, res, next) => {
 		let history = createMemoryHistory();
-		let routes = createRoutes(history);
+		let routes = pageRoutes(history);
 		let location = createLocation(req.url);
 		let store = configureStore();
 
@@ -96,14 +100,7 @@ function ServerCreater(frontendServer){
 			];
 		}
 	});
-	
-	return backendServer;
-}
-
-module.exports = ServerCreater;
-
-
-
+};
 
 
 
