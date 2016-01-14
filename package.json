@@ -1,6 +1,6 @@
 {
   "name": "isomorphic-startkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "isomorphic-startkit",
   "license": "MIT",
   "repository": {
@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node --harmony ./bin/www",
-    "dev": "node --harmony ./bin/www-dev --env=dev",
+    "dev": "node --harmony ./bin/www --env=dev",
     "build": "webpack -p -d --progress --colors"
   },
   "dependencies": {
