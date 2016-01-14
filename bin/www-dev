@@ -2,13 +2,30 @@
 
 "use strict";
 
-var debug = require('debug')('bigc-redux:server');
-var frontendServer = require('../webpack.dev');
-var http = require('http');
-var backendServer = require('../server')(frontendServer);
-var server = http.createServer(frontendServer);
-var port = 3000;
+var path = require('path');
+process.env.NODE_PATH = path.join(__dirname, '../');
+require('module').Module._initPaths();
 
+var paramMap = {};
+process.argv.forEach(function(val, index, array){
+	var paramSplit = val.split('=');
+	if(paramSplit[1]){
+		paramMap[paramSplit[0]] = paramSplit[1];
+	}
+});
+
+var debug = require('debug')('bigc-redux:server');
+var express = require('express');
+var app = new express();
+
+if(paramMap['--env'] === 'dev'){
+	require('../webpack.devHot')(app);
+}
+require('../server')(app);
+
+var http = require('http');
+var port = app.get('port');
+var server = http.createServer(app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

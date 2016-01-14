@@ -8,10 +8,8 @@
     "url": "https://github.com/rexhome7326/isomorphic-startkit"
   },
   "scripts": {
-    "wstart": "set NODE_PATH=.&& node --harmony ./bin/www",
-    "wdev": "set NODE_PATH=.&& node --harmony ./bin/www-dev",
-    "start": "NODE_PATH=. node --harmony ./bin/www",
-    "dev": "NODE_PATH=. node --harmony ./bin/www-dev",
+    "start": "node --harmony ./bin/www",
+    "dev": "node --harmony ./bin/www-dev --env=dev",
     "build": "webpack -p -d --progress --colors"
   },
   "dependencies": {
@@ -64,6 +62,6 @@
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "^1.14.0",
-   "webpack-hot-middleware": "^2.6.0"
+    "webpack-hot-middleware": "^2.6.0"
   }
 }
