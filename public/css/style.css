@@ -1,0 +1,108 @@
+.container {
+	min-height: 400px;
+	padding: 20px;
+}
+.hide {
+	display: none;
+}
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+.main-btn {
+	cursor: pointer;
+	border: 1px #369 solid;
+	background: #369;
+	color: #FFF;
+}
+
+/*
+ * table
+ */
+.table, .table .tr {
+	width: 100%;
+}
+.table .tr {
+	border-top: 1px #333 solid;
+}
+.table .tr:hover {
+	background: #F3F3F3;
+}
+.table .td {
+	width: 15%;
+	padding: 10px;
+	display: inline-block;
+	vertical-align: top;
+}
+.table dt.td {
+	padding-top: 8px;
+}
+.table dd.td {
+	width: 85%;
+}
+.table input,
+.table select{
+	width: 30%;
+	padding: 10px;
+}
+.table textarea {
+	width: 60%;
+	padding: 10px;
+}
+
+/**
+ * user-info-table
+ */
+.user-info-table-wrap .action-wrap {
+	text-align: center;
+}
+.user-info-table-wrap .action-wrap button {
+	margin: 10px;
+}
+.user-info-table-wrap[class*="edit-mode"] .info-wrap dt {
+	padding-top: 15px;
+}
+
+/**
+ * navigation
+ */
+.navigation {
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	background: #666; 
+}
+.navigation .navigation-link {
+	display: inline-block;
+	padding: 5px 10px;
+	border-right: 1px solid #FFF;
+	color: #FFF;
+}
+.navigation .navigation-link:hover {
+	background: #CCC; 
+	color: #333;
+}
+
+/**
+ * user-list
+ */
+.user-list .user {
+	margin-bottom: 10px;
+}
+.user-list .user-list-item .item-options {
+	width: 50px;
+	margin-top: 12px;
+}
+.user-list .user,
+.user-list .item-title {
+	width: 100%;
+	min-height: 40px;
+	padding-left: 50px;
+}
+.user-list .user .table .tr:first-child {
+	border-top-width: 0;
+}
+
+
+
