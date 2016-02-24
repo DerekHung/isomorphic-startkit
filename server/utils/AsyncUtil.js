@@ -74,6 +74,10 @@ function AsyncUtil() {
 						result = result[returnKey];
 					}
 					
+					if(Array.isArray(result)){
+						result = {currentResult:result};
+					}
+					
 					if(restCallback){
 						let newPool = restCallback(result);
 							
@@ -117,6 +121,10 @@ function AsyncUtil() {
 								
 								if(returnKey && result.hasOwnProperty(returnKey)){
 									result = result[returnKey];
+								}
+								
+								if(Array.isArray(result)){
+									result = {currentResult:result};
 								}
 								
 								if(methodCallback){
