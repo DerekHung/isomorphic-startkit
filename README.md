@@ -15,6 +15,7 @@ The data flow pattern of this using redux, and connecting state and props using 
 * Only one node server process (no hot-middleware)
 * Css modules for local css 
 * Json-LD for meta information
+* I18N
 
 ### ENV
 
@@ -24,6 +25,7 @@ The data flow pattern of this using redux, and connecting state and props using 
 * React 0.14+
 * Redux
 * React-router 1.0.3
+* I18N
 * Babel 6
 * React-transform-hmr
 * Webpack

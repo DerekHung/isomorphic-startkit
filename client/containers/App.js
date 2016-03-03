@@ -1,13 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import Header from 'client/containers/header';
-import Footer from 'client/containers/footer';
+import Header from 'client/components/header';
+import Navigation from 'client/components/navigation';
+import Footer from 'client/components/footer';
 
 class App extends Component {
 	render() {
 		return (
 			<div className="wrap">
 				<Header />
+				<Navigation />
 				<div className="container">{this.props.children}</div>
 				<Footer />
 			</div>
@@ -15,8 +17,4 @@ class App extends Component {
 	}
 }
 
-function mapStateToProps(state, props) {
-	return {};
-}
-
-export default connect(mapStateToProps)(App);
+export default connect()(App);

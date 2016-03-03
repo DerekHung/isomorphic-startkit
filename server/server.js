@@ -1,4 +1,5 @@
 import express from 'express';
+import i18n from "i18n";
 import path from 'path';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
@@ -12,14 +13,23 @@ import createMemoryHistory from 'history/lib/createMemoryHistory';
 import Promise from 'bluebird';
 
 import configureStore from 'client/store/configureStore';
-import pageRoutes from 'client/routes/index';
-import ajaxRoutes from 'client/routes/ajaxRoutes';
+import pageRoutes from 'client/routes';
+import ajaxRoutes from 'server/routes';
 
 module.exports = function(app){
+
+	i18n.configure({
+		locales: ['cht', 'en'],
+		defaultLocale: 'cht',
+		cookie: 'locale',
+		directory: path.join(__dirname, 'locales')
+	});
+	
 	app.use(compression());
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({extended:true})); 
 	app.use(cookieParser());
+	app.use(i18n.init);
 	app.use(express.static(path.join(__dirname, '../public')));
 	app.set('views', path.join(__dirname, 'views'));
 	app.set('view engine', 'ejs');
@@ -29,6 +39,13 @@ module.exports = function(app){
 	app.use(function(req, res, next){
 		req.params.serverSide = true;
 		req.query.serverSide = true;
+		
+		var locale = 'cht';
+		var cookie = req.cookies.locale;
+		if (cookie === undefined){
+			res.cookie('locale',locale, { maxAge: 900000, httpOnly: true });
+		}
+		
 		next();
 	});
 	app.use('/ajax', ajaxRoutes);
@@ -51,9 +68,10 @@ module.exports = function(app){
 				let [ getCurrentUrl, unsubscribe ] = subscribeUrl();
 				let reqUrl = location.pathname + location.search;
 
-				getReduxPromise().then(()=> {
+				function completeStore(){
 					let sourceState = store.getState();
 					let reduxState = JSON.stringify(sourceState);
+					
 					let html = ReactDOMServer.renderToString(
 						<Provider store={store}>
 							{ <RoutingContext {...renderProps} /> }
@@ -67,13 +85,11 @@ module.exports = function(app){
 					}
 					
 					unsubscribe();
-				});
+				}				
 				
 				function getReduxPromise () {
 					let { query, params } = renderProps;
 					let comp = renderProps.components[renderProps.components.length - 1].WrappedComponent;
-					
-					params.serverSide = true;
 					
 					let promise = comp.fetchData ?
 						comp.fetchData({ query, params, store, history }) :
@@ -83,6 +99,9 @@ module.exports = function(app){
 
 					return promise;
 				}
+				
+			
+				getReduxPromise().then(completeStore);
 			}
 		});
 
@@ -101,7 +120,3 @@ module.exports = function(app){
 		}
 	});
 };
-
-
-
-

@@ -1,15 +1,18 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-
-import apiMiddleware from 'client/middleware/api';
-import loggerMiddleware from 'client/middleware/logger';
+import loggerMiddleware from 'client/middlewares/logger';
 import rootReducer from 'client/reducers';
 
-const createStoreWithMiddleware = applyMiddleware(
-	thunkMiddleware,
-	apiMiddleware,
-	loggerMiddleware
-)(createStore);
+let middlewares = [thunkMiddleware,loggerMiddleware];
+
+if(typeof serverSide !== 'undefined' && serverSide === true){
+	middlewares.push(require('client/middlewares/asyncBeApi'));
+}else{
+	middlewares.push(require('client/middlewares/asyncFeApi'));
+}
+
+const applyMiddlewareWrap = applyMiddleware.apply(this, middlewares);
+const createStoreWithMiddleware = applyMiddlewareWrap(createStore);
 
 export default function configureStore(initialState) {
 	const store = createStoreWithMiddleware(rootReducer, initialState);

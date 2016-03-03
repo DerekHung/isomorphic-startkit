@@ -19,9 +19,9 @@ var express = require('express');
 var app = new express();
 
 if(paramMap['--env'] === 'dev'){
-	require('../webpack.devHot')(app);
+	require('../webpack.dev.config')(app);
 }else{
-	require('../webpack.devHot')();
+	require('../webpack.dev.config')();
 }
 require('../server')(app);
 

@@ -10,6 +10,7 @@ let reduxState;
 if (window.__REDUX_STATE__) {
 	try {
 		reduxState = __REDUX_STATE__;
+		__REDUX_STATE__ = {};
 	} catch (e) {}
 }
 

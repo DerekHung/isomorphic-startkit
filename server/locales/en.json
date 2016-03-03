@@ -1,0 +1,11 @@
+{
+	"Hello": "Hallo123",
+	"profileTitle": "Profile", 
+	"userName": "name", 
+	"userExp": "experience", 
+	"userEdu": "education", 
+	"userWebsite": "website", 
+	"userNote": "introduce",
+	"userEmail": "email",
+	"userSex": "gender"
+}

@@ -1,6 +1,6 @@
 {
   "name": "isomorphic-startkit",
-  "version": "0.0.2",
+  "version": "0.2.0",
   "description": "isomorphic-startkit",
   "license": "MIT",
   "repository": {
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node --harmony ./bin/www",
     "dev": "node --harmony ./bin/www --env=dev",
-    "build": "webpack -p -d --progress --colors"
+    "build": "webpack -p -d --config ./webpack.prod.config.js --progress --colors"
   },
   "dependencies": {
     "async": "^1.5.0",
@@ -22,18 +22,20 @@
     "debug": "^2.2.0",
     "ejs": "^2.3.4",
     "express": "^4.13.3",
-    "extract-text-webpack-plugin": "^1.0.0",
+    "extract-text-webpack-plugin": "^1.0.1",
     "history": "^1.17.0",
-    "jquery": "^2.1.4",
+    "i18n": "^0.5.0",
+    "is": "^3.1.0",
     "jsdom": "^7.2.2",
     "lodash": "^3.10.1",
+    "mobile-detect": "^1.3.1",
     "postcss": "^5.0.13",
     "postcss-modules-extract-imports": "^1.0.0",
     "postcss-modules-local-by-default": "^1.0.1",
     "postcss-modules-scope": "^1.0.0",
     "postcss-modules-values": "^1.1.1",
     "react": "^0.14.3",
-    "react-css-modules": "^3.6.3",
+    "react-css-modules": "^3.7.0",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.4",
     "react-router": "^1.0.3",
@@ -56,14 +58,11 @@
     "babel-preset-react": "6.3.13",
     "babel-runtime": "^6.3.19",
     "css-loader": "^0.23.1",
-    "postcss-modules": "^0.1.3",
-    "react-css-modules": "^3.6.4",
     "react-transform-catch-errors": "^1.0.0",
     "react-transform-hmr": "^1.0.1",
     "rewire-webpack": "^1.0.1",
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
-    "webpack-dev-server": "^1.14.0",
     "webpack-hot-middleware": "^2.6.0"
   }
 }
