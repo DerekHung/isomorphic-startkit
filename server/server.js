@@ -7,7 +7,7 @@ import bodyParser from 'body-parser';
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOMServer from 'react-dom/server';
-import { RoutingContext, match } from 'react-router';
+import { RouterContext, match } from 'react-router';
 import createLocation from 'history/lib/createLocation';
 import createMemoryHistory from 'history/lib/createMemoryHistory';
 import Promise from 'bluebird';
@@ -74,7 +74,7 @@ module.exports = function(app){
 					
 					let html = ReactDOMServer.renderToString(
 						<Provider store={store}>
-							{ <RoutingContext {...renderProps} /> }
+							{ <RouterContext {...renderProps} /> }
 						</Provider>
 					);
 
